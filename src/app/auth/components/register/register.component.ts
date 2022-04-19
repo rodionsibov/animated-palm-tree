@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { register } from '../../store/actions';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -17,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   initializeForm(): void {
     this.form = this.fb.group({
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -25,8 +27,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.form.value);
-    console.log('invalid', this.form.invalid);
-    console.log('valid', this.form.valid);
-    console.log('errors', this.form.get('email')?.hasError('required'));
+    this.store.dispatch(register(this.form.value));
   }
 }
