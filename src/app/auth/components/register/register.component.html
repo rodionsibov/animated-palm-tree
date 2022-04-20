@@ -9,31 +9,116 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <fieldset>
           <div class="form-group">
-            <label class="form-label mt-4">User Name</label>
+            <label class="form-label mt-4"
+              >User Name
+              <span
+                class="text-danger"
+                *ngIf="
+                  form.get('username')?.errors &&
+                  form.get('username')?.hasError('required')
+                "
+                >*</span
+              ></label
+            >
             <input
               type="text"
               class="form-control form-control-lg"
               formControlName="username"
+              [class.is-valid]="
+                form.get('username')?.valid &&
+                (form.get('username')?.dirty || form.get('username')?.touched)
+              "
+              [class.is-invalid]="
+                form.get('username')?.invalid &&
+                (form.get('username')?.dirty || form.get('username')?.touched)
+              "
             />
-            <div *ngIf="form.invalid" class="text-warning form-text">This field is required</div>
+            <div
+              *ngIf="form.get('username')?.hasError('required')"
+              class="invalid-feedback"
+            >
+              This field is required.
+            </div>
           </div>
           <div class="form-group">
-            <label class="form-label mt-2">Email</label>
+            <label class="form-label mt-2"
+              >Email
+              <span
+                class="text-danger"
+                *ngIf="
+                  form.get('email')?.errors &&
+                  form.get('email')?.hasError('required')
+                "
+                >*</span
+              >
+            </label>
             <input
               type="email"
               class="form-control form-control-lg"
               formControlName="email"
+              [class.is-valid]="
+                form.get('email')?.valid &&
+                (form.get('email')?.dirty || form.get('email')?.touched)
+              "
+              [class.is-invalid]="
+                form.get('email')?.invalid &&
+                (form.get('email')?.dirty || form.get('email')?.touched)
+              "
             />
-            <div *ngIf="form.invalid" class="text-warning form-text">This field is required</div>
+            <div
+              *ngIf="form.get('email')?.hasError('required')"
+              class="invalid-feedback"
+            >
+              This field is required.
+            </div>
+            <div
+              *ngIf="form.get('email')?.hasError('email')"
+              class="invalid-feedback"
+            >
+              Invalid email address.
+            </div>
           </div>
           <div class="form-group">
-            <label class="form-label mt-2">Password</label>
+            <label class="form-label mt-2"
+              >Password
+              <span
+                class="text-danger"
+                *ngIf="
+                  form.get('password')?.errors &&
+                  form.get('password')?.hasError('required')
+                "
+                >*</span
+              >
+            </label>
             <input
               type="password"
               class="form-control form-control-lg"
               formControlName="password"
+              [class.is-valid]="
+                form.get('password')?.valid &&
+                (form.get('password')?.dirty || form.get('password')?.touched)
+              "
+              [class.is-invalid]="
+                form.get('password')?.invalid &&
+                (form.get('password')?.dirty || form.get('password')?.touched)
+              "
             />
-            <div *ngIf="form.invalid" class="text-warning form-text">This field is required</div>
+            <div
+              *ngIf="form.get('password')?.hasError('required')"
+              class="invalid-feedback"
+            >
+              This field is required
+            </div>
+            <div
+              *ngIf="form.get('password')?.hasError('minlength')"
+              class="invalid-feedback"
+            >
+              The minimum length for this field is
+              {{
+                form.get("password")?.errors?.['minlength'].requiredLength
+              }}
+              characters.
+            </div>
           </div>
         </fieldset>
         <button

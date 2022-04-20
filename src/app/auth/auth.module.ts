@@ -1,15 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { reducers } from './store/reducers';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'register',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'register',
@@ -23,6 +25,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    StoreModule.forFeature('auth', reducers),
+  ],
 })
 export class AuthModule {}
