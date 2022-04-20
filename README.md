@@ -1,5 +1,7 @@
 # AngularNgrx
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bc8b6760-dbdf-463a-82fe-7890f3b2696d/deploy-status)](https://app.netlify.com/sites/stellar-rabanadas-a211cd/deploys)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
 ## Development server
