@@ -9,6 +9,7 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <fieldset>
           <div class="form-group">
+            <!-- Show the Field is Required Using the Label -->
             <label class="form-label mt-4"
               >User Name
               <span
@@ -20,6 +21,7 @@
                 >*</span
               ></label
             >
+            <!-- Show the Validation State Using the Field -->
             <input
               type="text"
               class="form-control form-control-lg"
@@ -33,6 +35,7 @@
                 (form.get('username')?.dirty || form.get('username')?.touched)
               "
             />
+            <!-- Show Each of the Validation Error Messages -->
             <div
               *ngIf="form.get('username')?.hasError('required')"
               class="invalid-feedback"
@@ -121,6 +124,7 @@
             </div>
           </div>
         </fieldset>
+        <!-- Disable the Submit Button -->
         <button
           class="btn btn-lg btn-primary pull-right mt-4 float-end"
           type="submit"
