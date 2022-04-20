@@ -7,6 +7,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'register',
+    pathMatch: 'full'
+  },
+  {
     path: 'register',
     component: RegisterComponent,
   },
