@@ -1,4 +1,5 @@
 <div class="container">
+  {{ isSubmitting$ | async }}
   <div class="row">
     <div class="col-md-6 mx-auto">
       <h1 class="text-center mt-5">Sign Up</h1>
@@ -128,7 +129,7 @@
         <button
           class="btn btn-lg btn-primary pull-right mt-4 float-end"
           type="submit"
-          [disabled]="form.invalid"
+          [disabled]="form.invalid || (isSubmitting$ | async)"
         >
           Sign Up
         </button>
