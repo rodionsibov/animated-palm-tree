@@ -18,7 +18,7 @@ import { RegisterRequestInterface } from '../../types/register-request-interface
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
   isSubmitting$!: Observable<boolean>;
-  backedErrors$!: Observable<BackendErrorsInterface | null>;
+  backendErrors$!: Observable<BackendErrorsInterface | null>;
 
   constructor(private fb: FormBuilder, private store: Store) {}
 
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   initializeValues() {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.backedErrors$ = this.store.pipe(select(validationErrorsSelector));
+    this.backendErrors$ = this.store.pipe(select(validationErrorsSelector));
   }
 
   initializeForm(): void {
