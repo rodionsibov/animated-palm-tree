@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
 
   initializeValues() {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    console.log('isSubmitting', this.isSubmitting$);
   }
 
   initializeForm(): void {
