@@ -6,7 +6,7 @@
       <p class="text-center">
         <a [routerLink]="['/login']">Have an account?</a>
       </p>
-      BackendErrors are here
+      <app-backend-error-messages *ngIf="backedErrors$ | async" ></app-backend-error-message> 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <fieldset>
           <div class="form-group">
@@ -42,6 +42,12 @@
               class="invalid-feedback"
             >
               This field is required.
+            </div>
+            <div
+              *ngIf="form.get('username')?.hasError('pattern')"
+              class="invalid-feedback"
+            >
+            A field name cannot start with a blank space.
             </div>
           </div>
           <div class="form-group">
