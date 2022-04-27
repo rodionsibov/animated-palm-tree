@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test": {
+    "angular-ngrx": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "test:build:production"
+              "browserTarget": "angular-ngrx:build:production"
             },
             "development": {
-              "browserTarget": "test:build:development"
+              "browserTarget": "angular-ngrx:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "test:build"
+            "browserTarget": "angular-ngrx:build"
           }
         },
         "test": {
